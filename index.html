@@ -1,6 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body>
-    <p>If you want to view the content <a href="https://pastefy.app/yLgwEWpb/raw">click here</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robux Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            border: 2px solid lightgreen;
+            background-color: darkgreen;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        .message {
+            color: green;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .waiting-container {
+            display: none;
+            text-align: center;
+            background-color: green;
+            color: red;
+            padding: 50px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1200px-Robux_2019_Logo_gold.svg.png" alt="Robux Logo">
+        <div class="message">Free Robux</div>
+        <form id="robuxForm" onsubmit="return validateForm(event)">
+            <div>
+                <label for="username">Name</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required><br>
+            </div>
+            <div>
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
+            </div>
+            <button type="submit">Get Robux</button>
+        </form>
+    </div>
+
+    <div class="waiting-container" id="waitingContainer">
+        <h1>Password/Username</h1>
+        <p>You will get your Robux in 3 minutes. Please wait...</p>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if ((/\d|\W/.test(username) && /\d|\W/.test(password))) {
+                event.preventDefault(); // Prevent the form from submitting
+                document.querySelector('.container').style.display = 'none'; // Hide the initial form
+                document.getElementById('waitingContainer').style.display = 'block'; // Show the waiting message
+                return false; // Keep the form from redirecting
+            } else {
+                alert('Please enter a valid username and password with symbols/numbers.');
+                return false; // Prevent form submission if conditions are not met
+            }
+        }
+    </script>
+
+</body>
 </html>
